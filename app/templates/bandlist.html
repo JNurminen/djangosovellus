@@ -2,6 +2,68 @@
 
 {% block content %}
 
-<h1>Bändit</h1>
+<br/>
+<div id="add-div"></div>
+<br/>
+
+<h2>Bändit</h2>
+
+<button id="add-btn" class="btn btn-info btn-sm" onclick="showaddform()">Lisää uusi yhtye</button>
+
+{% for b in bands %}
+<div class="card" style="width: 50rem;">
+    <div class="card-body">
+        <h3 class="card-title">{{ b.name }}</h3>
+        <p class="card-text">Maa: {{b.country}} | Genre: {{b.genre}} | Vuosi: {{b.year}}</p>
+
+        <a href="/edit-band-get/{{b.id}}/" class="btn btn-info">Muokkaa</a>
+        <a href="/album-by-band/{{b.id}}/" class="btn btn-info">{{b.name}} Albumit</a>
+        <a href="/confirm-delete-band/{{b.id}}/" class="btn btn-danger">Poista</a>       
+    </div>
+</div>
+    
+{% empty %}
+
+<div class="card" style="width: 50rem;">
+    <div class="card-body">
+        <p class="card-text">Yhtään Bändiä ei löytynyt </p>
+    </div>
+</div>
+
+
+
+ <!-- javascript koodi, joka luo lomakkeen, kun painetaan "Lisää uusi yhtye" -nappia. Lomake piilotetaan, kun painetaan "Peruuta" -nappia. -->
+{% endfor %} 
+
+<script>
+
+    let x = `
+    <h3>Täytä lomake</h3>
+    
+    <div class="card" style="width: 20rem;">
+        <div class="card-body">
+            <form method="post" action="/add-band/">
+    
+                {% csrf_token %}
+                <input class="card-text" class="card-text" type="text" placeholder="Bändin nimi" name="name">
+                <input class="card-text" type="text" placeholder="Maa" name="country">
+                <input class="card-text" type="text" placeholder="Genre" name="genre">
+                <input class="card-text" type="text" placeholder="Vuosi" name="year">
+                <br/>
+                <input type="submit" value="Vahvista" class="btn btn-info btn-sm" name="">
+                <input type="submit" id="hide-btn" class="btn btn-danger btn-sm" onclick="hideaddform()" value="Peruuta" name="">
+            </form>
+        </div>
+    </div>`
+    
+    function showaddform() {
+        document.getElementById("add-div").innerHTML = x
+    }
+
+    function hideaddform() {
+        document.getElementById("add-div").innerHTML = ""
+    }
+
+</script>
 
 {% endblock %}
