@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 40rem;">
+    <div class="card-header">
+
+        <h5>Muokataan albumia {{album.name}} yhtyeeltä {{album.band.name}}</h5>
+
+        <div class="card-body">
+            <form method="post" action="/edit-album-post/{{album.id}}/">
+
+                {%csrf_token %}
+                <div class="form-group">
+                    <label>Albumi:</label>
+                    <input type="text" name="name" value={{album.name}}>
+                </div>
+                <div class="form-group">
+                    <label>Vuosi:</label>
+                    <input type="number," name="year" value={{album.year}}>
+                </div>
+                <input type="submit" value="Päivitä" class="btn btn-info btn-sm">
+                <input type="button" onclick="window.location.href='/albums'" id="hide-btn"
+                    class="btn btn-danger btn-sm" value="Peruuta">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

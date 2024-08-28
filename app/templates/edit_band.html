@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 40rem;">
+    <div class="card-header">
+
+        <h5>Muokataan {{band.name}} yhtyettä</h5>
+
+        <div class="card-body">
+            <form method="post" action="/edit-band-post/{{band.id}}/">
+
+                {%csrf_token %}
+                <div class="form-group">
+                    <label>Maa:</label>
+                    <input type="text" name="country" value={{band.country}}>
+                </div>
+                <div class="form-group">
+                    <label>Genre:</label>
+                    <input type="text" name="genre" value={{band.genre}}>
+                </div>
+                <div class="form-group">
+                    <label>Vuosi:</label>
+                    <input type="number" name="year" value={{band.year}}>
+                </div>
+                <input type="submit" value="Päivitä" class="btn btn-info btn-sm">
+                <input type="button" onclick="window.location.href='/bands'" id="hide-btn"
+                    class="btn btn-danger btn-sm" value="Peruuta">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
