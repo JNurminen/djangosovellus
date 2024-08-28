@@ -21,6 +21,18 @@ def addalbum(request):
     Album(name=a, band=Band.objects.get(id=b), year=c).save()
     return redirect(request.META['HTTP_REFERER'])
 
+# poista albumi
+def confirmdeletealbum(request, id):
+    album = Album.objects.get(id=id)
+    context = {'album': album}
+    return render(request, 'confirmdelalb.html', context)
+
+def deletealbum(request, id):
+    Album.objects.get(id=id).delete()
+    return redirect(albumlistview)
+
+
+
 # bändi näkymä
 def bandlistview(request):
     bandlist = Band.objects.all()
@@ -35,3 +47,13 @@ def addband(request):
     d = request.POST['year']
     Band(name=a, country=b, genre=c, year=d).save()
     return redirect(request.META['HTTP_REFERER'])
+
+# poista bändi
+def confirmdeleteband(request, id):
+    band = Band.objects.get(id=id)
+    context = {'band': band}
+    return render(request, 'confirmdelband.html', context)
+
+def deleteband(request, id):
+    Band.objects.get(id=id).delete()
+    return redirect(bandlistview)

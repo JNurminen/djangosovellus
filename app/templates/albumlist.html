@@ -13,17 +13,19 @@
 
 {% for a in albums %}
 
-<div class="card" style="width: 50rem;">
+<div class="card" style="width: 40rem;">
     <div class="card-body">
         <h3 class="card-title">{{a.name}} </h3>
         <h5 class="card-text">Yhtye: {{a.band.name}}</h5>
         <p class="card-text">Julkaistu: {{a.year}} </p>
         <a href="/edit-album-get/{{a.id}}/" class="btn btn-info">Muokkaa</a>
 
+        <a href="/albums-by-band/{{a.band.id}}/" class="btn btn-info">{{a.band.name}} kaikki
+            albumit</a>
+
         <a href="/confirm-delete-album/{{a.id}}/" class="btn btn-danger">Poista</a>
 
-        <a href="/albums-by-band/{{a.band.id}}/" class="btn btn-secondary">{{a.band.name}} kaikki
-            albumit</a>
+        
 
     </div>
 </div>

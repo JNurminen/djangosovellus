@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h2>Poista albumi</h2>
+
+<div class="card" style="width: 40rem;">
+    <div class="card-body">
+        <h3 class="card-title">Vahvista poisto</h3>
+        <h5 class="card-text">Albumi: {{album.name}}</h5>
+        
+        <a href="/albums/" class="btn btn-info">Takaisin</a>
+
+        <a href="/delete-album/{{album.id}}/" class="btn btn-danger">Poista</a>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<h2>Poista yhtye</h2>
+
+<div class="card" style="width: 40rem;">
+    <div class="card-body">
+        <h3 class="card-title">Vahvista poisto</h3>
+        <h5 class="card-text">Yhtye: {{band.name}}</h5>
+        
+        <a href="/bands/" class="btn btn-info">Takaisin</a>
+
+        <a href="/delete-band/{{band.id}}/" class="btn btn-danger">Poista</a>
+
+    </div>
+</div>
+
+{% endblock %}
