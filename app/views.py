@@ -61,6 +61,13 @@ def addband(request):
     Band(name=a, country=b, genre=c, year=d).save()
     return redirect(request.META['HTTP_REFERER'])
 
+# etsi bändi
+def searchband(request):
+    search = request.POST['search']
+    filtered = Band.objects.filter(name__icontains=search)
+    context = {'bands': filtered}
+    return render(request, "bandlist.html", context)
+
 # poista bändi
 def confirmdeleteband(request, id):
     band = Band.objects.get(id=id)

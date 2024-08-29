@@ -10,6 +10,14 @@
 
 <button id="add-btn" class="btn btn-info btn-sm" onclick="showaddform()">Lisää uusi yhtye</button>
 
+<form method="post" action="/search-bands/">
+
+    {%csrf_token %}
+    <input class="card-text" class="card-text" type="text" placeholder="search" name="search">
+
+    <input type="submit" value="Etsi" class="btn btn-info btn-sm" name="">
+</form>
+
 {% for b in bands %}
 <div class="card" style="width: 40rem;">
     <div class="card-body">
@@ -45,7 +53,7 @@
             <form method="post" action="/add-band/">
     
                 {% csrf_token %}
-                <input class="card-text" class="card-text" type="text" placeholder="Bändin nimi" name="name">
+                <input class="card-text" class="card-text" type="text" placeholder="Yhtyeen nimi" name="name">
                 <input class="card-text" type="text" placeholder="Maa" name="country">
                 <input class="card-text" type="text" placeholder="Genre" name="genre">
                 <input class="card-text" type="text" placeholder="Vuosi" name="year">
