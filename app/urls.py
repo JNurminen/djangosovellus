@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import landingview, albumlistview, bandlistview, addband, addalbum, deletealbum, \
       confirmdeletealbum, deleteband, confirmdeleteband, edit_album_get, edit_album_post, \
-        edit_band_get, edit_band_post, searchband
+        edit_band_get, edit_band_post, searchband, albums_filtered
 
 urlpatterns = [
     path('', landingview),
@@ -13,6 +13,7 @@ urlpatterns = [
     path('confirm-delete-album/<int:id>/', confirmdeletealbum),
     path('edit-album-get/<int:id>/', edit_album_get),
     path('edit-album-post/<int:id>/', edit_album_post),
+    path('album-by-band/<int:id>/', albums_filtered),
 
     # bändit url
     path('bands/', bandlistview),

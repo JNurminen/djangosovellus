@@ -44,6 +44,13 @@ def edit_album_post(request, id):
     album.save()
     return redirect(albumlistview)
 
+# etsi albumi
+def albums_filtered(request, id):
+    albumlist = Album.objects.all()
+    filteredalbums = albumlist.filter(band=id)
+    context = {'albums': filteredalbums}
+    return render(request, "albumlist.html", context)
+
 
 
 # bändi näkymä

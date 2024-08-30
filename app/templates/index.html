@@ -17,20 +17,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
 </head>
+
+<header>
+    <center>
+    <div class="btn-group" role="group">
+        <a class="btn btn-info btn-sm" href="/bands">Bändit</a>
+        <a class="btn btn-info btn-sm" href="/albums">Levyt</a>
+        <a class="btn btn-info btn-sm" href="http://meteli.net">keikkakalenteri</a>
+        <a class="btn btn-info btn-sm" href="/admin">Admin pages</a>
+        <a class="btn btn-danger btn-sm">Logout</a>
+    </div>
+    </center>
+</header>
 
 <body>
     <div class="container">
         <center>
-
-            <div class="btn-group" role="group">
-                <a class="btn btn-success btn-sm" href="/bands">Bändit</a>
-                <a class="btn btn-success btn-sm" href="/albums">Levyt</a>
-                <a class="btn btn-success btn-sm" href="http://meteli.net">keikkakalenteri</a>
-                <a class="btn btn-success btn-sm" href="/admin">Admin pages</a>
-                <a class="btn btn-danger btn-sm">Logout</a>
-            </div>
 
             {% block content %} # tähän tulee landingpage.html:n sisältö
 
@@ -38,7 +44,6 @@
 
         </center>
     </div>
-
 </body>
 
 
