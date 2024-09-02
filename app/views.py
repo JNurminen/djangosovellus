@@ -1,10 +1,41 @@
 from django.shortcuts import render, redirect
 from .models import Band, Album
+from django.contrib.auth import authenticate, login, logout
 
 # Luodaan näkymät
 
+# etusivu
+'''
 def landingview(request):
     return render(request, 'landingpage.html')
+    '''
+
+# kirjautumisnäkymä
+def loginview(request):
+    return render(request, 'loginpage.html')
+
+# rekisteröintinäkymä
+def login_action(request):
+    user = request.POST['username']
+    passw = request.POST['password']
+    # Löytyykö kyseistä käyttäjää?
+    user = authenticate(username = user, password = passw)
+    #Jos löytyy:
+    if user:
+        # Kirjataan sisään
+        login(request, user)
+        # Tervehdystä varten context
+        context = {'name': user}
+        # Kutsutaan suoraan landingview.html
+        return render(request,'landingpage.html',context)
+    # Jos ei kyseistä käyttäjää löydy
+    else:
+        return render(request, 'loginerror.html')
+
+# kirjautumisen lopetus
+def logout_action(request):
+    logout(request)
+    return render(request, 'loginpage.html')
 
 # album näkymä
 def albumlistview(request):

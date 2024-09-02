@@ -1,10 +1,18 @@
 from django.urls import path
-from .views import landingview, albumlistview, bandlistview, addband, addalbum, deletealbum, \
+from .views import albumlistview, bandlistview, addband, addalbum, deletealbum, \
       confirmdeletealbum, deleteband, confirmdeleteband, edit_album_get, edit_album_post, \
-        edit_band_get, edit_band_post, searchband, albums_filtered
+        edit_band_get, edit_band_post, searchband, albums_filtered, \
+        loginview, login_action, logout_action
 
 urlpatterns = [
-    path('', landingview),
+    
+    # etusivu kirjautumisen jälkeen
+    # path('landing/', landingview),
+
+    # kirjautuminen
+    path('', loginview),
+    path('login/', login_action),
+    path('logout/', logout_action),
 
     # albumit url
     path('albums/', albumlistview),
@@ -13,7 +21,7 @@ urlpatterns = [
     path('confirm-delete-album/<int:id>/', confirmdeletealbum),
     path('edit-album-get/<int:id>/', edit_album_get),
     path('edit-album-post/<int:id>/', edit_album_post),
-    path('album-by-band/<int:id>/', albums_filtered),
+    path('albums-by-band/<int:id>/', albums_filtered),
 
     # bändit url
     path('bands/', bandlistview),

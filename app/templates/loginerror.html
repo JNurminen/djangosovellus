@@ -1,0 +1,21 @@
+{% extends 'index.html'%}
+
+{% block content %}
+
+<div class="card" style="width: 25rem; margin-top: 40px;">
+
+    <div class="card-header">
+
+        <h5>Väärät tunnukset</h5>
+
+        <div class="card-body">
+    
+                <p>Käyttäjänimi tai salasana oli väärä. Yritä uudelleen.</p>
+    
+                <input type="button" onclick="window.location.href='/'" class="btn btn-info btn-sm"
+                    value="Yritä uudelleen">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
