@@ -39,10 +39,13 @@ def logout_action(request):
 
 # album näkymä
 def albumlistview(request):
-    albumlist = Album.objects.all()
-    bandlist = Band.objects.all()
-    context = {'albums': albumlist, 'band': bandlist}
-    return render(request, "albumlist.html", context)
+    if not request.user.is_authenticated:
+        return render(request, 'loginpage.html')
+    else:
+        albumlist = Album.objects.all()
+        bandlist = Band.objects.all()
+        context = {'albums': albumlist, 'band': bandlist}
+        return render(request, "albumlist.html", context)
 
 # albumin lisäys näkymä
 def addalbum(request):
@@ -86,9 +89,12 @@ def albums_filtered(request, id):
 
 # bändi näkymä
 def bandlistview(request):
-    bandlist = Band.objects.all()
-    context = {'bands': bandlist}
-    return render(request, "bandlist.html", context)
+    if not request.user.is_authenticated:
+        return render(request, 'loginpage.html')
+    else:
+        bandlist = Band.objects.all()
+        context = {'bands': bandlist}
+        return render(request, "bandlist.html", context)
 
 # bändin lisäys näkymä
 def addband(request):

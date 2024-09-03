@@ -7,21 +7,15 @@ header::after {
   margin-top: 10px;
 }
 
-header {
-    padding: 10px 0;
-}
-
 body {
   font-family: 'Roboto', sans-serif;
   background-color: lightgray;
 }
 
+header {
+  padding: 20px;
+}
+
 .btn {
-  background-color: rgb(170, 133, 40);
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+    font-size: 16px;
 }
