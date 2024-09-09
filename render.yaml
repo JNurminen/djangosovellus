@@ -21,8 +21,8 @@ services:
       - key: WEB_CONCURRENCY
         value: 4
       - key: DJANGO_SUPERUSER_USERNAME
-        value: "nurmi"
+        value: "nurmi1"
       - key: DJANGO_SUPERUSER_PASSWORD
         value: "nurmi123"
       - key: DJANGO_SUPERUSER_EMAIL
-        value: "testi@testi.fi"
+        value: "testi@testi1.fi"
